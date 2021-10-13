@@ -72,20 +72,20 @@ int main(int argc, char **argv) {
    
     
    if(error==1 || error==2)prevpos=1;
-   else if(error==-1 || error==-2)prevpos=2;
+   if(error==-1 || error==-2)prevpos=2;
    
-   if(error==100){
+   if(error==-100){
     allblack=true;
     error=0;
     turntjunction(8);
     calculatePID();
     motorPIDcontrol();
    }
-   else if(error==-100){
+   else if(error==100){
    if(tempo>212 && dot==true){
 
 int tt=0;
-  while (robot->step(TIME_STEP) != -1  && tt!=2) {
+  while (robot->step(TIME_STEP) != -1  && tt!=15) {
   wheels[0]->setVelocity(-1);
   wheels[1]->setVelocity(1);
   tt++;
